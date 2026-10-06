@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HZBott</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+    }
+
+    .search {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .search input {
+      width: 90%;
+      max-width: 500px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 0 15px 20px;
+    }
+
+    .category {
+      background: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px #ddd;
+    }
+
+    .products {
+      padding: 20px;
+    }
+
+    .products h2 {
+      margin-top: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #ddd;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .buy {
+      background: #111;
+      color: white;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>HZBott</h1>
+    <p>Sən sat, biz birləşdirək.</p>
+  </header>
+
+  <div class="search">
+    <input type="text" placeholder="Nə axtarırsan?">
+  </div>
+
+  <div class="categories">
+    <div class="category">👕 Geyim</div>
+    <div class="category">📱 Elektronika</div>
+    <div class="category">👟 Ayaqqabı</div>
+    <div class="category">⌚ Aksesuar</div>
+  </div>
+
+  <div class="products">
+    <h2>Yeni məhsullar</h2>
+
+    <div class="card">
+      <h3>Telefon</h3>
+      <p>İkinci əl elektronika</p>
+      <div class="price">500 AZN</div>
+      <button class="buy">Məhsula bax</button>
+    </div>
+
+    <div class="card">
+      <h3>İdman ayaqqabısı</h3>
+      <p>Yeni məhsul</p>
+      <div class="price">80 AZN</div>
+      <button class="buy">Məhsula bax</button>
+    </div>
+  </div>
+
+</body>
+</html>
