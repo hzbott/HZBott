@@ -1,104 +1,32 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HZBottmarket place
-  /title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f5f7;
-      color: #111;
-    }
-
-    header {
-      background: #111;
-      color: white;
-      padding: 22px 18px;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-    }
-
-    .slogan {
-      margin-top: 6px;
-      color: #ccc;
-    }
-
-    .search {
-      padding: 20px 15px 10px;
-    }
-
-    .search input {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      box-shadow: 0 2px 8px #ddd;
-    }
-
-    .categories {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 10px 15px 20px;
-    }
-
-    .category {
-      background: white;
-      padding: 13px 17px;
-      border-radius: 12px;
-      white-space: nowrap;
-      box-shadow: 0 2px 7px #ddd;
-    }
-
-    .section {
-      padding: 0 15px 20px;
-    }
-
-    .section h2 {
-      font-size: 22px;
-    }
-
-    .product {
-      background: white;
-      padding: 17px;
-      border-radius: 14px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px #ddd;
-    }
-
-    .product h3 {
-      margin-top: 0;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    .button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 9px;
-      font-size: 15px;
-    }
-
-    .sell {
-      display: block;
-      width: calc(100% - 30px);
-      margin: 5
-HZBOtt market place
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HZBott — Alış-veriş platforması</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f6fa;color:#202333}header{background:#172554;color:white;padding:22px 16px}header h1{margin:0;font-size:29px}header p{margin:7px 0 0;color:#dbeafe}.wrap{max-width:900px;margin:auto;padding:18px}.search{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px;margin-bottom:14px}.categories{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.categories button,.sell{padding:11px 14px;border:0;border-radius:9px;background:#dbeafe;color:#1e3a8a;font-weight:bold}.sell{background:#2563eb;color:white;width:100%;padding:14px;font-size:16px}.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{background:white;border-radius:12px;padding:16px;box-shadow:0 2px 8px #0000000a}.emoji{font-size:38px}.product h3{margin:9px 0}.price{font-weight:bold;color:#2563eb}.muted{color:#666;font-size:13px}.panel{background:white;padding:18px;border-radius:12px;margin-top:22px}.panel input,.panel select,.panel textarea{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ddd;border-radius:8px;font-size:15px}.panel button{width:100%;padding:13px;background:#172554;color:white;border:0;border-radius:9px;font-size:16px}footer{text-align:center;padding:28px;color:#666;font-size:13px}@media(min-width:600px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>HZBott</h1><p>Al, sat, yenidən kəşf et.</p></div></header>
+<main class="wrap">
+<input class="search" id="search" placeholder="Məhsul axtar..." oninput="render()">
+<div class="categories"><button onclick="filter='Hamısı';render()">Hamısı</button><button onclick="filter='Geyim';render()">Geyim</button><button onclick="filter='Elektronika';render()">Elektronika</button><button onclick="filter='Digər';render()">Digər</button></div>
+<button class="sell" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">+ Elan yerləşdir</button>
+<h2>Məhsullar</h2><p class="muted">Nümunə elanlar — real satış hələ aktiv deyil.</p>
+<div class="products" id="products"></div>
+<section class="panel" id="form"><h2>Elan yerləşdir</h2><p class="muted">Bu ilkin demo elanları yalnız bu səhifədə göstərir.</p>
+<label>Məhsulun adı</label><input id="name" placeholder="Məsələn, köynək">
+<label>Qiymət (AZN)</label><input id="price" type="number" min="0" placeholder="25">
+<label>Kateqoriya</label><select id="category"><option>Geyim</option><option>Elektronika</option><option>Digər</option></select>
+<label>Qısa məlumat</label><textarea id="description" placeholder="Məhsul haqqında məlumat"></textarea>
+<button onclick="addProduct()">Elanı göstər</button><p class="muted" id="message"></p></section>
+</main><footer>HZBott © 2026 · Alıcılar və satıcılar üçün platforma</footer>
+<script>
+let filter='Hamısı';
+let items=[{name:'Gündəlik köynək',price:'25',category:'Geyim',description:'Nümunə məhsul',emoji:'👕'},{name:'Qulaqlıq',price:'35',category:'Elektronika',description:'Nümunə məhsul',emoji:'🎧'},{name:'İdman ayaqqabısı',price:'60',category:'Geyim',description:'Nümunə məhsul',emoji:'👟'}];
+function render(){let q=document.getElementById('search').value.toLowerCase();document.getElementById('products').innerHTML='';let found=items.filter(p=>(filter==='Hamısı'||p.category===filter)&&(p.name+' '+p.description).toLowerCase().includes(q));found.forEach(p=>{let d=document.createElement('article');d.className='product';let e=document.createElement('div');e.className='emoji';e.textContent=p.emoji||'📦';let h=document.createElement('h3');h.textContent=p.name;let pr=document.createElement('div');pr.className='price';pr.textContent=p.price+' AZN';let c=document.createElement('p');c.className='muted';c.textContent=p.category;let desc=document.createElement('p');desc.textContent=p.description;d.append(e,h,pr,c,desc);document.getElementById('products').append(d)});if(!found.length)document.getElementById('products').textContent='Məhsul tapılmadı.'}
+function addProduct(){let name=document.getElementById('name').value.trim(),price=document.getElementById('price').value,category=document.getElementById('category').value,description=document.getElementById('description').value.trim();if(!name||!price||Number(price)<=0){document.getElementById('message').textContent='Məhsulun adını və düzgün qiyməti yaz.';return}items.unshift({name,price,category,description:description||'Əlavə məlumat yoxdur',emoji:category==='Geyim'?'👕':category==='Elektronika'?'📱':'📦'});render();document.getElementById('message').textContent='Elan bu demo səhifəsində göstərildi. Hələ serverdə saxlanmır və real satış etmir.';document.getElementById('name').value='';document.getElementById('price').value='';document.getElementById('description').value=''}
+render();
+</script></body></html>
